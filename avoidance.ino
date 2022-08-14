@@ -158,6 +158,7 @@ void right() {
   motorBackLeft.setSpeed(Speed);
 }
 void left() {
+  // Turn Left
   motorBackRight.run(FORWARD);
   motorFrontRight.run(FORWARD);
   motorFrontLeft.run(BACKWARD);
