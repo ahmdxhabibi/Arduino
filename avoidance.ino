@@ -37,30 +37,17 @@ void loop() {
   int rightSensor = sensorThree();
 // Check the distance using the IF condition
 
-  if (8 >= rightSensor) {
-    belki();
-    delay(50);
-    Serial.println("Belok kiri");
-    delay(50);
-    }
-   else if (8 >= leftSensor) {
-    belka();
-    delay(50);
-    Serial.println("Belok Kanan");
-    delay(50);
-    }
-  
   if(25 >= centerSensor) {
     Stop();
     Serial.println("Stop");
     delay(500);
     if (leftSensor > rightSensor) {
       left();
-      Serial.println("Left");
+      Serial.println("Turn Left");
       delay(500);
     } else {
       right();
-      Serial.println("Right");
+      Serial.println("Turn Right");
       delay(500);
     }
   }
@@ -114,28 +101,6 @@ int sensorThree() {
 }
 
 /*******************Motor functions**********************/
-void belki(){                 
-  // Oblique left
-  motorBackRight.run(FORWARD);
-  motorFrontRight.run(FORWARD);
-  motorFrontLeft.run(FORWARD);
-  motorBackLeft.run(FORWARD);
-  motorBackRight.setSpeed(Speed + 25);
-  motorFrontRight.setSpeed(Speed + 25);
-  motorFrontLeft.setSpeed(Speed);
-  motorBackLeft.setSpeed(Speed);
-}
-void belka(){
-  // Oblique Right
-  motorBackRight.run(FORWARD);
-  motorFrontRight.run(FORWARD);
-  motorFrontLeft.run(FORWARD);
-  motorBackLeft.run(FORWARD);
-  motorBackRight.setSpeed(Speed);
-  motorFrontRight.setSpeed(Speed);
-  motorFrontLeft.setSpeed(Speed + 25);
-  motorBackLeft.setSpeed(Speed + 25);
-}
 void forward() {
   motorBackRight.run(FORWARD);
   motorFrontRight.run(FORWARD);
@@ -147,7 +112,6 @@ void forward() {
   motorBackLeft.setSpeed(Speed);
 }
 void right() {
-  // Turn Right
   motorBackRight.run(BACKWARD);
   motorFrontRight.run(BACKWARD);
   motorFrontLeft.run(FORWARD);
@@ -158,7 +122,6 @@ void right() {
   motorBackLeft.setSpeed(Speed);
 }
 void left() {
-  // Turn Left
   motorBackRight.run(FORWARD);
   motorFrontRight.run(FORWARD);
   motorFrontLeft.run(BACKWARD);
